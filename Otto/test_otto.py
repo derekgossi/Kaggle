@@ -69,24 +69,3 @@ print "Random forest CV score", np.mean(rf_score)
 gb_score = cross_validation.cross_val_score(gb_model, features, labels, scoring='log_loss', cv=3)
 print "Gradient boosting CV score", np.mean(gb_score)
 
-# # RBM
-# from sklearn.neural_network import BernoulliRBM
-# from sklearn.preprocessing import MinMaxScaler
-
-# # RBM layer
-# layer1 = BernoulliRBM(n_components=256, learning_rate=0.1, batch_size=10, n_iter=10, verbose=0, random_state=None)
-
-# # Hyper-parameters
-# layer1.learning_rate = 0.5
-# layer1.n_iter = 10
-# layer1.n_components = 10
-
-# # Fit RBM layer to data
-# scaler = MinMaxScaler()
-# features_sc = scaler.fit_transform(features.astype(float))
-# features_sc_rbm = layer1.fit_transform(features_sc)
-# total_features = [features_sc_rbm, features]
-
-# # RBM into gradient boosted classifier
-# gb_score_rbm = cross_validation.cross_val_score(gb_model, total_features, labels, scoring='log_loss', cv=3)
-# print "Gradient boosting CV score w RBM", np.mean(gb_score_rbm)
